@@ -1,0 +1,11 @@
+.mobile-started {
+  display: none;
+}
+@media screen and (max-width: 850px) {
+  .mobile-started {
+    display: block;
+  }
+  .desktop-started {
+    display: none !important;
+  }
+}

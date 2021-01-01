@@ -1,0 +1,57 @@
+.ext-su {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f3f3f3;
+  display: flex;
+  justify-content: center;
+}
+.ext-su-hu {
+  align-self: center;
+  width: 95vw;
+  height: 95vh;
+  background-color: white;
+  box-shadow: 0px 0px 50px 0px #d5d5d5;
+  border-radius: 3vw;
+  display: grid;
+  grid-template-columns: 4fr 5fr;
+}
+.ext-new-su button {
+  background-color: #0093e6 !important;
+
+  color: rgb(255, 255, 255) !important;
+
+  padding: 10px 20px !important;
+  border-radius: 5px;
+  margin: 0 5px;
+  border: none;
+
+  box-shadow: 0px 0px 6px 0px #7e7e7e !important;
+  font-family: monospace;
+}
+.ext-new-su {
+  margin-top: 100px;
+}
+.or-section-hr {
+  margin: 50px auto;
+  display: flex;
+  justify-content: left;
+}
+.section-inputs-nes-sect input {
+  border: 2px solid #ebebeb;
+  padding: 10px 30px;
+  border-radius: 10px;
+  margin: 5px;
+}
+.section-inputs-nes-sect input:focus {
+  border: 2px solid #f3aa0d;
+}
+.section-inputs-nes-sect {
+  text-align: center;
+  width: 50%;
+}
+.middle-special-inp {
+  padding: 10px 215px !important;
+}
+.or-section-hr h5 {
+  margin-left: 100px;
+}

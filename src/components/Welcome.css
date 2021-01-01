@@ -1,0 +1,21 @@
+.welcome-link {
+  color: black;
+  font-weight: 600;
+  margin: 0 20px;
+  font-size: 110%;
+}
+.welcome-btn {
+  background-color: #0093e6 !important;
+
+  color: rgb(255, 255, 255) !important;
+
+  padding: 10px 20px !important;
+  border-radius: 5px;
+  margin: 0 5px;
+  border: none;
+  padding: 10px 30px !important;
+
+  box-shadow: 0px 0px 6px 0px #7e7e7e !important;
+  font-family: sans-serif;
+  margin-left: 40px;
+}

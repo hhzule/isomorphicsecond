@@ -1,0 +1,12 @@
+.details-mobile {
+  display: none !important;
+}
+
+@media screen and (max-width: 900px) {
+  .details-mobile {
+    display: block !important;
+  }
+  .details {
+    display: none !important;
+  }
+}

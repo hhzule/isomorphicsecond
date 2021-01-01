@@ -1,0 +1,157 @@
+.main {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+
+  background-image: url("../assets/work.jpg");
+  background-blend-mode: color;
+  background-color: rgba(0, 0, 0, 0.624);
+}
+.main-signup {
+  background-color: white;
+  position: absolute;
+  width: 700px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.primary h2 {
+  padding: 30px;
+  align-self: center;
+  font-family: "Roboto", sans-serif;
+  align-self: center;
+  text-align: center;
+  font-size: x-large;
+  color: rgb(148, 148, 148);
+}
+.form input {
+  border-radius: 3px;
+  width: 90%;
+  align-self: center;
+  padding: 8px 0;
+  margin: 8px auto;
+  border: 1px solid rgb(225, 225, 225);
+}
+.form input:focus {
+  border: lightseagreen;
+}
+.form {
+  margin-top: 10px;
+
+  text-align: center;
+  width: 100%;
+}
+.primary {
+  width: 100%;
+}
+.form input::placeholder {
+  font-weight: 500;
+  color: rgb(189, 189, 189);
+  font-size: small;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+.form input {
+  font-weight: 600;
+  color: black;
+  font-size: small;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+.form input:placeholder-shown {
+  margin: 10px 5px;
+  padding: 10px 5px;
+}
+.signup-btn {
+  margin-top: 20px;
+  width: 100%;
+  align-self: center;
+  margin: 0 auto;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.signup-btn button,
+.facebook-btn,
+.twitter-btn {
+  align-self: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  font-size: small;
+  font-weight: 600;
+
+  margin: 7px auto;
+  width: 90%;
+}
+.normal-btn {
+  background-color: rgb(21, 178, 184);
+}
+.facebook-btn {
+  transition: 1s ease-in;
+  background-color: rgb(0, 110, 255);
+  background-size: cover;
+  background-position: center;
+  align-self: center;
+
+  background-repeat: no-repeat;
+}
+
+.twitter-btn {
+  background-color: #1da1f2;
+}
+.checkbox {
+  display: flex;
+  margin-left: 25%;
+}
+.checkbox input {
+  width: 10% !important;
+}
+.checkbox > p {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  align-self: center;
+}
+
+.error {
+  color: rgb(207, 94, 94);
+}
+.butn:hover {
+  font-size: 13px;
+  transition: 0.5s ease-out;
+  transform: scale(1.03);
+}
+.butn {
+  align-self: center;
+  transition: 1s ease-out;
+}
+.butn i {
+  align-self: center;
+  font-size: 20px;
+  margin: 5px 10px;
+}
+.butn {
+  display: flex;
+  justify-content: center;
+}
+.butn p {
+  align-self: center;
+  margin: 0px;
+}
+@media only screen and (max-width: 900px) {
+  .main-signup {
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
+}

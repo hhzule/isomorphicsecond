@@ -1,0 +1,368 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
+.dash {
+}
+.mobile-view {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+}
+.link-to-update {
+  display: none;
+}
+img {
+  width: 30px;
+}
+.link-to-list {
+  display: none;
+}
+
+.sidebar {
+  position: fixed !important;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 7vw;
+
+  background-color: #2d3446;
+}
+.primary {
+  background-color: white;
+}
+.mainer {
+  color: white;
+}
+.primary {
+}
+
+.auto-diver {
+  background-color: white;
+  padding: 10px;
+  height: 60px;
+  display: grid;
+}
+.bottom-main {
+}
+.card-container {
+  background-color: grey !;
+}
+.saved-list-section {
+  margin: 30px;
+}
+.card-grid {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100px) translateY(200px);
+  width: 100%;
+}
+.card {
+  width: 100%;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  height: 30vh !important;
+}
+.card-img {
+  height: 30vh !important;
+}
+.heading {
+  align-self: center;
+  height: 60px;
+  text-align: center;
+  background-color: #1f2431 !important;
+}
+
+.heading h1 {
+  padding: 15px 0px;
+  color: white;
+  align-self: center;
+  font-size: x-large;
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 3px;
+}
+.list-heading {
+  background-color: #47baa2;
+  font-size: larger;
+
+  color: white;
+  text-align: center;
+  display: grid;
+  align-self: center;
+  grid-template-columns: 2fr 10fr;
+}
+.list-heading p {
+  margin-top: 10px;
+}
+.saved-list-section {
+  outline: 1px solid rgb(232, 232, 232);
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin-top: 90px;
+  width: 15%;
+  background-color: white;
+}
+.saved-list-section > div > div .data {
+  padding: 0 30px;
+}
+.list-icon-div {
+  border-bottom: 3px solid rgb(232, 232, 232);
+  padding: 10px 20px;
+
+  background-color: white;
+}
+.dropdown {
+}
+.dropdown {
+  margin: 0 30px;
+}
+.dropdown-content {
+  width: 300px;
+}
+#header {
+  position: relative;
+  min-height: 150px;
+  background-color: #f3f3f3 !important;
+}
+
+.dropdown-content {
+  transform: translateX(-90%);
+}
+.dropdown-content button {
+  background-color: #47baa2;
+  border: none;
+  padding: 5px 20px;
+  color: white;
+}
+.card-grid > div {
+  transform: translateX(-50px);
+}
+.saved-list-section {
+  min-width: 230px;
+}
+@media only screen and (max-width: 1260px) {
+  .card-grid {
+    transform: translateX(30px);
+  }
+}
+@media only screen and (max-width: 930px) {
+  .sidebar {
+    width: 140px;
+  }
+  .spooof {
+    width: 140px;
+  }
+  .primary {
+    width: 100%;
+  }
+
+  /* .card-grid {
+    transform: translateX(40px);
+  } */
+}
+@media only screen and (max-width: 874px) {
+  /* 
+  .section-of-list-grid {
+    display: none;
+  }
+  .saved-list-section {
+    display: none;
+  }
+  .link-to-list {
+    display: block;
+  }
+  .bottom-main {
+    grid-template-columns: auto;
+  } */
+  /* 
+  .header {
+    width: 90%;
+    margin: 0px;
+  } */
+  /* .main-container {
+  } */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* .main-container {
+    margin-right: 0px;
+  } */
+  .header {
+    width: 100%;
+    margin: 0;
+  }
+  .active i {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 470px) {
+  .card-grid {
+    transform: translateX(-30px);
+  }
+}
+@media only screen and (max-width: 420px) {
+  .sidebar,
+  .spooof {
+    width: 110px;
+  }
+  .dash {
+    grid-template-columns: 110px auto;
+  }
+  .card-grid {
+    transform: translateX(-55px);
+  }
+}
+
+/* .error-that {
+  -moz-animation: cssAnimation 0s ease-in 5s forwards;
+  Firefox
+  -webkit-animation: cssAnimation 0s ease-in 5s forwards;
+  Safari and Chrome
+  -o-animation: cssAnimation 0s ease-in 5s forwards;
+  Opera
+  animation: cssAnimation 0s ease-in 5s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+  to {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+}
+@-webkit-keyframes cssAnimation {
+  to {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+} */
+.map__container {
+  display: flex;
+  flex-direction: column;
+}
+.dropdown {
+  transform: translateY(30%);
+  height: 30px;
+}
+.main-container {
+}
+/* @media only screen and (max-width: 1380px) {
+  .card {
+    transform: translateX(30px);
+  }
+} */
+.dropdown img {
+  width: 40px;
+
+  border-radius: 100%;
+}
+@media only screen and (max-width: 675px) {
+  .card-grid {
+    transform: translateX(-30px);
+  }
+  .card {
+    width: 250px;
+  }
+}
+@media only screen and (max-width: 869px) {
+  .dropdown {
+    display: none;
+  }
+  .link-to-update {
+    display: block;
+  }
+  .search-btn-div {
+    width: 1005;
+  }
+  .auto-diver {
+    display: block;
+  }
+  .card-grid {
+    transform: translateX(-20px);
+  }
+}
+@media only screen and (max-width: 420px) {
+  .heading h1 {
+    font-size: large;
+  }
+}
+.plce-car {
+  display: flex;
+}
+@media only screen and (max-width: 630px) {
+  .dash {
+    display: none;
+  }
+  .mobile-view {
+    display: block;
+  }
+  .auto-diver {
+    display: flex !important
+    ;
+  }
+  .auto-diver > div {
+    width: 100%;
+  }
+  .search-btn-div {
+    width: 30% !important;
+  }
+  .home-dash-sidebar {
+    display: none;
+  }
+}
+.mobile-view .card-grid {
+  margin-top: 50px;
+}
+.mobile-view {
+  margin: 0;
+  padding: 0;
+}
+.auto-diver {
+  display: flex;
+}
+.auto-diver div {
+  width: 100%;
+}
+.search-btn-div {
+  width: 100px !important;
+}
+
+@media only screen and (max-width: 490px) {
+  .card-grid {
+    transform: translateX(20%);
+  }
+}
+
+.hidden-data {
+  display: none;
+}
+@media only screen and (max-width: 1170px) {
+  .link-to-list {
+    display: block;
+  }
+  .hidden-data {
+    display: block;
+  }
+}
+@media only screen and (max-width: 1600px) {
+  .heading {
+    display: none;
+  }
+}
+.modal-mobile-falo {
+  display: none;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgba(0, 0, 0, 0.378) !important;
+  position: fixed;
+  z-index: 10000000000000000000000000000000000;
+}
+.d-none {
+  display: none !important;
+}
+.map-contain {
+  transform: translateX(70px);
+}
