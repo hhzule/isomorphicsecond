@@ -11,18 +11,20 @@ import { Link, useHistory } from "react-router-dom";
 import PlacesAutocomplete, { geocodeByAddress } from "react-places-autocomplete"
 import backone from "../assets/Images-20201231T125621Z-001/Images/family-travelling.png"
 import { useData } from "../components/firebaseDisplayComponent/DataProvider";
-
+import DatePicker from "react-datepicker"
 function Started() {
     const history = useHistory();
-    const [city, setCity] = useState();
-    const [country, setCountry] = useState();
+    const [city, setCity] = useState("timbaktu");
+    const [country, setCountry] = useState("tim");
     const [trip, setTrip] = useState();
     const [tripError, setTripError] = useState()
     const [cityError, setCityError] = useState()
     const { currentUser } = useAuth();
-    const [lat, setLat] = useState();
-    const [lng, setLng] = useState();
+    const [lat, setLat] = useState(50);
+    const [lng, setLng] = useState(50);
     const fbdata = useData();
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
     const handleSelect = async (value) => {
         const res = await geocodeByAddress(value);
         console.log(res, "res")
@@ -61,9 +63,11 @@ function Started() {
                         trip,
                         country,
                         lat,
-                        lng
+                        lng,
+                        start: startDate.toDateString(),
+                        end: endDate.toDateString()
                     });
-                history.push(`/select/${country}/${city}/${trip}/${lat}/${lng}`)
+                history.push(`/select/${country}/${city}/${trip}/${lat}/${lng}/${startDate.toDateString()}/${endDate.toDateString()}`)
 
 
             } catch (e) {
@@ -82,7 +86,7 @@ function Started() {
 
 
     }
-    console.log(city, "city")
+
 
     return (
         <>
@@ -183,6 +187,21 @@ function Started() {
                             </div>
                             {cityError && <p>{cityError}</p>}
 
+                            <DatePicker
+                                selected={startDate}
+                                onChange={date => setStartDate(date)}
+                                selectsStart
+                                startDate={startDate}
+                                endDate={endDate}
+                            />
+                            <DatePicker
+                                selected={endDate}
+                                onChange={date => setEndDate(date)}
+                                selectsEnd
+                                startDate={startDate}
+                                endDate={endDate}
+                                minDate={startDate}
+                            />
                             <Link style={{
                                 padding: "10px 25px",
                                 color: "white",
@@ -204,7 +223,7 @@ function Started() {
                         {fbdata && fbdata.time.map((obj, i) => {
                             return <div key={i}>
 
-                                <Link to={`mydashboard/${obj.dash.country}/${obj.dash.city}/${obj.dash.trip}/${obj.dash.lat}/${obj.dash.lng}`}>
+                                <Link to={`mydashboard/${obj.dash.country}/${obj.dash.city}/${obj.dash.trip}/${obj.dash.lat}/${obj.dash.lng}/${obj.dash.start}/${obj.dash.end}`}>
                                     {obj.dash.city}
                                 </Link>
                                 <button onClick={() => deletedash(obj.id)}>
@@ -276,7 +295,21 @@ function Started() {
                                 )}</PlacesAutocomplete>
                             </div>
                             {cityError && <p>{cityError}</p>}
-
+                            <DatePicker
+                                selected={startDate}
+                                onChange={date => setStartDate(date)}
+                                selectsStart
+                                startDate={startDate}
+                                endDate={endDate}
+                            />
+                            <DatePicker
+                                selected={endDate}
+                                onChange={date => setEndDate(date)}
+                                selectsEnd
+                                startDate={startDate}
+                                endDate={endDate}
+                                minDate={startDate}
+                            />
                             <Link style={{
                                 padding: "10px 25px",
                                 color: "white",
@@ -301,7 +334,7 @@ function Started() {
                                 <button onClick={() => deletedash(obj.id)}>
                                     del dashboard
                                 </button>
-                                <Link to={`mydashboard/${obj.dash.country}/${obj.dash.city}/${obj.dash.trip}/${obj.dash.lat}/${obj.dash.lng}`}>
+                                <Link to={`mydashboard/${obj.dash.country}/${obj.dash.city}/${obj.dash.trip}/${obj.dash.lat}/${obj.dash.lng}/${obj.dash.start}/${obj.dash.end}`}>
                                     {obj.dash.city}
                                 </Link>
                             </div>

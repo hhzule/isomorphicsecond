@@ -1,0 +1,33 @@
+@keyframes yourAnimation {
+  0% {
+    transform: scale(0) !important;
+  }
+
+  100% {
+    transform: rotate(xx) scale(1) !important;
+  }
+}
+
+.modal-nonemodal-toggled {
+  animation: yourAnimation 0.5s forwards 0s ease-out !important;
+  position: absolute;
+  display: block;
+  background-color: white;
+  top: 0;
+  left: 1;
+  transform: translateY(30vh);
+  z-index: 100000;
+}
+
+@keyframes yourAnimationone {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: rotate(xx) scale(0);
+  }
+}
+.modal-none {
+  display: none;
+  animation: yourAnimationone 0.5s forwards 0s ease-out;
+}

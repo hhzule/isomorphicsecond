@@ -104,7 +104,7 @@ const PlaceDataDisplay = ({ trip, city, lat, lng }) => {
     }
 
     return (
-        <div className="" style={{ width: "500px", minHeight: "800px", border: "1px solid grey", backgroundColor: "white", borderRadius: "10px" }}>
+        <div className="" style={{ width: "450px", height: "600px", border: "1px solid grey", backgroundColor: "white", borderRadius: "10px" }}>
             <div style={{ width: "100%", padding: "30px", paddingBottom: "0px", display: "flex", justifyContent: "space-between" }} >
 
                 <h3 style={{ fontSize: "25px" }}>Restaurants</h3>
@@ -113,7 +113,7 @@ const PlaceDataDisplay = ({ trip, city, lat, lng }) => {
             </div>
 
             <Divider />
-            <div style={{ width: "100%", overflowY: "scroll", maxHeight: "80vh" }}>
+            <div style={{ width: "100%", overflowY: "scroll", height: "400px" }}>
                 {data && data.map((obj, i) => {
                     return <div key={i} style={{ padding: "10px", borderBottom: "2px dashed lightgray" }} >
                         <div style={{ display: "flex", margin: "0px auto", justifyContent: "space-between", width: "100%" }}>
@@ -134,7 +134,7 @@ const PlaceDataDisplay = ({ trip, city, lat, lng }) => {
                 })}
             </div>
 
-            <div style={{ textAlign: "center" }}>
+            <div style={{ textAlign: "center", marginTop: "30px" }}>
                 <button disabled={abled} style={{ backgroundColor: "#47baa2", color: "white", padding: "5px 10px", border: "none", textAlign: "center", margin: "0 auto" }} onClick={() => CSV()}>Download List</button><br />
             </div>
         </div>

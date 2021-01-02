@@ -18,15 +18,18 @@ import "./hamburger.css"
 import Fullcalendar from "../Calendar/Fullcalendar"
 import PlaceDataDisplay from "./firebaseDisplayComponent/PlaceDataDisplay";
 import { AiOutlinePlus } from "react-icons/ai"
-
+import ActivitiesDataDisplay from "../components/firebaseDisplayComponent/ActivitiesDataDisplay";
 
 export const Home = () => {
   const [listnameerror, setListnameerror] = useState();
-  const { country, trip, city, lat, lng } = useParams();
+  const { country, trip, city, lat, lng, start, end } = useParams();
   const { currentUser } = useAuth();
   const [list, setList] = useState();
   const [nav, setNav] = useState(false);
   const [listname, setListname] = useState();
+  const [watch, setWatch] = useState()
+
+  const events = [{ title: "Today", add: "here", date: new Date('2020-03-22') }];
   const handletoggle = () => {
     // console.log(nav);
     setNav(!nav);
@@ -46,7 +49,7 @@ export const Home = () => {
     const fetchdash = async () => {
 
       await firestore.collection(currentUser.uid + `/${city}/list`).onSnapshot((snap) => {
-
+        const wat = snap.docs.map((doc) => doc.data())
         const newdata = snap.docs.map((doc) => (
           {
             id: doc.id,
@@ -54,7 +57,7 @@ export const Home = () => {
           }
         )
         )
-
+        setWatch(wat)
         setList(newdata)
         // setLoading(false)
       })
@@ -63,6 +66,7 @@ export const Home = () => {
 
     fetchdash();
   }, [])
+
 
   const handleListCreate = async () => {
     if (listname) {
@@ -83,11 +87,12 @@ export const Home = () => {
 
     handletoggle()
   }
+  // console.log(watch, "watch")
   // console.log(list, "list")
-
+  // console.log(new Date(start), "start")
   return (
     <>
-      <div className={renderFixed()}>
+      <div className={renderFixed()} style={{ zIndex: "" }}>
         <div style={{ width: "500px", height: "300px", backgroundColor: "teal" }} >
           <div>
             <h2 style={{ fontSize: "180%", textAlign: "center", color: "white", margin: "30px" }}>Enter List Name</h2>
@@ -159,7 +164,8 @@ export const Home = () => {
 
           </div>
           <div className="home-dash-main">
-
+            <h1>Trip to {city}</h1>
+            <h5>{trip}</h5>
             <div className="dahs-api-mobile"><Weather city={city} /></div>
             <div className="dahs-api-mobile"><h2 style={{ textAlign: "center" }}>News In {city} </h2>
               <News country={country} /></div>
@@ -169,7 +175,7 @@ export const Home = () => {
           <div style={{ display: "flex", justifyContent: "center", padding: "40px", width: "80vw" }} >
             <div style={{ width: "70vw" }}>
 
-              <Fullcalendar style={{ height: "300px" }} />
+              <Fullcalendar city={city} start={start} end={end} style={{ height: "300px" }} />
             </div>
 
           </div>
@@ -180,12 +186,12 @@ export const Home = () => {
           </div>
           <div style={{ display: "flex", justifyContent: "left", padding: "30px" }}>
 
-            <PlaceDataDisplay city={city} trip={trip} lat={lat} lng={lng} />
+            {/* <PlaceDataDisplay start={start} end={end} city={city} trip={trip} lat={lat} lng={lng} />
+            <ActivitiesDataDisplay start={start} end={end} city={city} />
 
-
-            <br />
+            <br /> */}
             {list && list.map((obj, i) => {
-              return <div key={i}><DataDisplay name={obj.dash.mylist} city={city} listid={obj.id} /><br /></div>
+              return <div key={i}><DataDisplay start={start} end={end} name={obj.dash.mylist} city={city} listid={obj.id} /><br /></div>
             })}
           </div>
         </div>
@@ -197,6 +203,8 @@ export const Home = () => {
       <div className="home-dash-new mobile">
         <Hamburger />
         <div className="home-dash-main">
+          <h1>Trip to {city}</h1>
+          <h5>{trip}</h5>
           <div className="dash-api-div-mobile">
 
             <div className="dahs-api-mobile" style={{ width: "45vw" }}>
@@ -211,20 +219,27 @@ export const Home = () => {
             <News country={country} />
           </div>
           <div style={{ textAlign: "left", display: "flex", justifyContent: "left", padding: "40px" }} >
-            <div>
-              {/* <Calendar style={{ width: "10vw" }} /> */}
-              <Fullcalendar />
+            <div style={{ display: "flex", justifyContent: "center", padding: "40px", width: "80vw" }} >
+              <div style={{ width: "70vw" }}>
+
+                <Fullcalendar city={city} start={start} end={end} style={{ height: "300px" }} />
+              </div>
+
             </div>
           </div>
-          <button onClick={() => handleCreate()}>create list</button>
+          <div style={{ display: "flex", padding: "30px" }}>
+            <h3 style={{ fontSize: "30px" }}>Your Lists</h3>
+            <button style={{ backgroundColor: "#4abaa3", color: "white", padding: "10px", borderRadius: "5px", border: "none", margin: "0 30px" }} onClick={() => handleCreate()}><AiOutlinePlus /> ADD NEW LIST</button>
+
+          </div>
           <div style={{ display: "flex", justifyContent: "left", padding: "30px" }}>
 
-            <PlaceDataDisplay city={city} trip={trip} lat={lat} lng={lng} />
+            {/* <PlaceDataDisplay start={start} end={end} city={city} trip={trip} lat={lat} lng={lng} />
+            <ActivitiesDataDisplay start={start} end={end} city={city} />
 
-
-            <br />
+            <br /> */}
             {list && list.map((obj, i) => {
-              return <div key={i}><DataDisplay name={obj.dash.mylist} city={city} listid={obj.id} /><br /></div>
+              return <div key={i}><DataDisplay start={start} end={end} name={obj.dash.mylist} city={city} listid={obj.id} /><br /></div>
             })}
           </div>
         </div>

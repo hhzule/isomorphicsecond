@@ -31,8 +31,8 @@ function App() {
           <Switch>
             <PrivateRoute exact path="/" component={Started} />
             <PrivateRoute path="/dashboard/:city/:trip/:lat/:lng" component={New} />
-            <PrivateRoute path="/mydashboard/:country/:city/:trip/:lat/:lng" component={Home} />
-            <PrivateRoute path="/select/:country/:city/:trip/:lat/:lng" component={Home} />
+            <PrivateRoute path="/mydashboard/:country/:city/:trip/:lat/:lng/:start/:end" component={Home} />
+            <PrivateRoute path="/select/:country/:city/:trip/:lat/:lng/:start/:end" component={Home} />
             <PrivateRoute path="/profile" component={UpdateProfile} />{" "}
             <Route exact path="/welcome" component={Welcome} />
             {/* <Route exact path="/signup" component={Signup} /> */}

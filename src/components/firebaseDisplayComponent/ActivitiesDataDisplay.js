@@ -8,22 +8,20 @@ import { useAuth } from "../../contexts/AuthContext"
 import { FaTrash, FaRegCalendar } from "react-icons/fa"
 import { RiDeleteBack2Fill } from "react-icons/ri"
 import { AiOutlinePlus } from "react-icons/ai"
-import DatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css";
+
 import "./DataDisplay.css"
+
 import { AiOutlineDelete } from "react-icons/ai"
 import { saveAs } from 'file-saver';
 import { Link } from "react-router-dom";
+const ActivitiesDataDisplay = ({ city, listid }) => {
 
-const DataDisplay = ({ name, city, listid, start, end }) => {
-    console.log(listid, "ididididi")
     const { currentUser } = useAuth();
     const [data, setData] = useState();
     const [listvalue, setListvalue] = useState();
     const [listTitle, setListTitle] = useState();
     const [error, setError] = useState();
     const [nav, setNav] = useState(false);
-    const [startDate, setStartDate] = useState(null);
     const handletoggle = () => {
         // console.log(nav);
         setNav(!nav);
@@ -42,8 +40,8 @@ const DataDisplay = ({ name, city, listid, start, end }) => {
 
         const fetchdash = async () => {
 
-            await firestore.collection(currentUser.uid + `/${city}/${name}`).onSnapshot((snap) => {
-                const wat = snap.docs.map((doc) => doc.data())
+            await firestore.collection(currentUser.uid + `/${city}/activity`).onSnapshot((snap) => {
+
                 const newdata = snap.docs.map((doc) => (
                     {
                         id: doc.id,
@@ -59,34 +57,9 @@ const DataDisplay = ({ name, city, listid, start, end }) => {
 
 
         fetchdash();
-    }, []);
-
-    const addReminder = async (title, id) => {
-        // console.log(startDate.toString(), "date")
-
-        if (startDate)
-            try {
-                await firestore
-                    .collection(currentUser.uid + `/${city}/calendar`).doc(id)
-                    .set({
-                        title,
-                        dat: startDate.toString()
-                    });
-            } catch (e) {
-                console.log("Failed to add " + e.message);
-            }
-    }
+    }, [])
     const abled = listvalue && listvalue.length === 0 ? true : false
-    const deletelist = async () => {
-        try {
 
-            await firestore.collection(currentUser.uid + `/${city}/list`).doc(listid).delete()
-        } catch (e) {
-            console.log("Failed to delete " + e.message);
-        }
-
-
-    }
     const handleadd = async () => {
         if (!listTitle)
             setError("Enter Title")
@@ -94,7 +67,7 @@ const DataDisplay = ({ name, city, listid, start, end }) => {
 
             try {
                 await firestore
-                    .collection(currentUser.uid + `/${city}/${name}`)
+                    .collection(currentUser.uid + `/${city}/activity`)
                     .add({
                         value: listvalue,
                         title: listTitle
@@ -111,18 +84,11 @@ const DataDisplay = ({ name, city, listid, start, end }) => {
     }
     const handleDelete = async (id) => {
         try {
-            await firestore.collection(currentUser.uid + `/${city}/${name}`).doc(id).delete()
+            await firestore.collection(currentUser.uid + `/${city}/activity`).doc(id).delete()
         } catch (e) {
             console.log("Failed to add " + e.message);
         }
-        try {
-
-            await firestore.collection(currentUser.uid + `/${city}/calendar`).doc(id).delete()
-        } catch (e) {
-            console.log("Failed to delete " + e.message);
-        }
     }
-
 
     return (
         <>
@@ -146,10 +112,10 @@ const DataDisplay = ({ name, city, listid, start, end }) => {
                 <div className="" style={{ width: "450px", height: "600px", border: "1px solid grey", backgroundColor: "white", borderRadius: "10px" }}>
                     <div style={{ width: "100%", padding: "30px", paddingBottom: "0px", display: "flex", justifyContent: "space-between" }} >
 
-                        <h3 style={{ fontSize: "25px" }}>{name} list</h3>
+                        <h3 style={{ fontSize: "25px" }}>Activities list</h3>
                         <button style={{ backgroundColor: "#4abaa3", width: "40px", height: "40px", border: "none", color: "white", borderRadius: "100px" }} onClick={() => handletoggle()}><AiOutlinePlus /></button>
 
-                        <button style={{ backgroundColor: "#4abaa3", width: "40px", height: "40px", border: "none", color: "white", borderRadius: "100px" }} onClick={() => deletelist()}><RiDeleteBack2Fill /></button>
+                        {/* <button style={{ backgroundColor: "#4abaa3", width: "40px", height: "40px", border: "none", color: "white", borderRadius: "100px" }} onClick={() => deletelist()}><RiDeleteBack2Fill /></button> */}
                         {/* <Link to={`/dashboard/${city}/${trip}/${lat}/${lng}`}> <button style={{ backgroundColor: "#4abaa3", width: "40px", height: "40px", border: "none", color: "white", borderRadius: "100px" }}><AiOutlinePlus /></button></Link> */}
 
                     </div>
@@ -172,16 +138,7 @@ const DataDisplay = ({ name, city, listid, start, end }) => {
 
                                     <div style={{ display: "flex" }}>
                                         <button style={{ fontSize: "15px", borderRadius: "5px", backgroundColor: "lightgray", color: "white", border: "none", margin: "0 10px", width: "40px", height: "40px" }} onClick={() => handleDelete(obj.id)}><FaTrash /> </button>
-                                        <button style={{ fontSize: "15px", borderRadius: "5px", backgroundColor: "#4494e6", color: "white", border: "none", margin: "0 10px", width: "40px", height: "40px" }} onClick={() => addReminder(obj.dash.title, obj.id)}
-                                        ><FaRegCalendar /> </button>
-                                        <DatePicker
-                                            selected={startDate}
-                                            onChange={date => setStartDate(date)}
-                                            minDate={new Date(start)}
-                                            maxDate={new Date(end)}
-                                            placeholderText="Select a date between today and 5 days in the future"
-                                        // calendarContainer={MyContainer}
-                                        />
+                                        <button style={{ fontSize: "15px", borderRadius: "5px", backgroundColor: "#4494e6", color: "white", border: "none", margin: "0 10px", width: "40px", height: "40px" }} ><FaRegCalendar /> </button>
 
                                     </div>
 
@@ -201,4 +158,4 @@ const DataDisplay = ({ name, city, listid, start, end }) => {
     )
 }
 
-export default DataDisplay
+export default ActivitiesDataDisplay
